@@ -1,9 +1,10 @@
 import React from 'react'
+import Hero from './Hero';
 
 export default function RoomsList() {
   return (
-    <div>
-      <h3>hello from RoomsList</h3>
-    </div>
+    <React.Fragment>
+      <Hero hero="rooms-hero" />
+    </React.Fragment>
   )
 }

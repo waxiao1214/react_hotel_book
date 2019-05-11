@@ -1,9 +1,10 @@
 import React from 'react'
+import Hero from './Hero';
 
 export default function Error() {
   return (
-    <div>
-      <h3>hello from Error</h3>
-    </div>
+    <React.Fragment>
+      <Hero />
+    </React.Fragment>
   )
 }
