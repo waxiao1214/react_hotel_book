@@ -1,11 +1,32 @@
-import React, { Component } from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import defaultImg from '../img/room-1.jpeg';
+import PropTypes from 'prop-types';
 
-export default class Room extends Component {
-  render() {
-    return (
-      <div>
-        <h3>hello from Room</h3>
+export default function Room({ room }) {
+  const { name, slug, images, price } = room;
+  return (
+    <article className="room">
+      <div className="img-container">
+        <img src={images[0] || defaultImg} alt="single room" />
+        <div className="price-top">
+          <h6>{price}€</h6>
+          <p>per night</p>
+        </div>
+        <Link to={`/rooms/${slug}`} className="btn-primary room-link">
+          Features
+        </Link>
+        <div className="room-info">{name}</div>
       </div>
-    )
-  }
+    </article>
+  )
+}
+
+Room.propTypes = {
+  room: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    price: PropTypes.number.isRequired,
+  }).isRequired
 }
