@@ -353,7 +353,6 @@ h6 {
 /* Room */
 .room {
   box-shadow: var(--lightShadow);
-  transition: var(--mainTransition);
 }
 
 .room:hover {
@@ -362,6 +361,7 @@ h6 {
 
 .img-container {
   position: relative;
+  transition: var(--mainTransition);
 }
 
 .img-container img {
@@ -395,7 +395,7 @@ h6 {
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: all 0.2s linear;
+  transition: var(--mainTransition);
 }
 
 .img-container:hover {
