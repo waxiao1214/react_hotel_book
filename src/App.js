@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
 import RoomsList from './components/RoomsList';
-import Room from './components/Room';
 import Error from './components/Error';
 import Navbar from './components/Navbar';
+import SingleRoom from './components/SingleRoom';
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/rooms" component={RoomsList} />
-          <Route path="/rooms/:slug" component={Room} />
+          <Route path="/rooms" exact component={RoomsList} />
+          <Route path="/rooms/:slug" component={SingleRoom} />
           <Route component={Error} />
         </Switch>
       </React.Fragment>
