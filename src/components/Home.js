@@ -8,13 +8,11 @@ import FeaturedRooms from './FeaturedRooms';
 export default function Home() {
   return (
     <React.Fragment>
-      <Hero >
-        <Banner
-          title="luxurious rooms"
-          subtitle="Lorem ipsum dolor sit amet.">
-          <Link to="/rooms" className="btn-primary">
+      <Hero>
+        <Banner title='luxurious rooms' subtitle='Lorem ipsum dolor sit amet.'>
+          <Link to='/rooms' className='btn-primary'>
             view rooms
-        </Link>
+          </Link>
         </Banner>
       </Hero>
       <Services />

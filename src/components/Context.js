@@ -8,22 +8,22 @@ export default class RoomProvider extends Component {
     rooms: [],
     sortedRooms: [],
     featuredRooms: [],
-    loading: true
-  }
+    loading: true,
+  };
 
   componentDidMount() {
     // format data for Contentful CMS
-    const rooms = this.formatData(items)
+    const rooms = this.formatData(items);
     const featuredRooms = rooms.filter(room => room.featured === true);
     this.setState(() => ({
       rooms,
       featuredRooms,
       sortedRooms: rooms,
-      loading: false
+      loading: false,
     }));
   }
 
-  formatData = (items) => {
+  formatData = items => {
     const tempItems = items.map(item => {
       const id = item.sys.id;
       const images = item.fields.images.map(image => image.fields.file.url);
@@ -32,22 +32,24 @@ export default class RoomProvider extends Component {
       return room;
     });
     return tempItems;
-  }
+  };
 
-  getRoom = (slug) => {
+  getRoom = slug => {
     const tempRooms = [...this.state.rooms];
     const room = tempRooms.find(room => room.slug === slug);
     return room;
-  }
+  };
 
   render() {
     return (
-      <Provider value={{
-        ...this.state,
-        getRoom: this.getRoom
-      }}>
+      <Provider
+        value={{
+          ...this.state,
+          getRoom: this.getRoom,
+        }}
+      >
         {this.props.children}
       </Provider>
-    )
+    );
   }
 }

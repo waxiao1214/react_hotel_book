@@ -8,12 +8,14 @@ export default function FeaturedRooms() {
   return (
     <Consumer>
       {({ featuredRooms, loading }) => (
-        <section className="featured-rooms">
-          <Title title="featured rooms" />
-          <div className="featured-rooms-center">
-            {loading ? <Loading /> : featuredRooms.map(room => (
-              <Room key={room.id} room={room} />
-            ))}
+        <section className='featured-rooms'>
+          <Title title='featured rooms' />
+          <div className='featured-rooms-center'>
+            {loading ? (
+              <Loading />
+            ) : (
+              featuredRooms.map(room => <Room key={room.id} room={room} />)
+            )}
           </div>
         </section>
       )}
