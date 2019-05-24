@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function Banner({ children, title, subtitle }) {
   return (
@@ -10,5 +10,5 @@ export default function Banner({ children, title, subtitle }) {
         {children}
       </div>
     </div>
-  )
+  );
 }

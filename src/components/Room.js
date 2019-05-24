@@ -19,7 +19,7 @@ export default function Room({ room }) {
         <div className="room-info">{name}</div>
       </div>
     </article>
-  )
+  );
 }
 
 Room.propTypes = {
@@ -29,4 +29,4 @@ Room.propTypes = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired
-}
+};

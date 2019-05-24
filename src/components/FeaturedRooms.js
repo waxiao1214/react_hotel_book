@@ -11,9 +11,9 @@ export default function FeaturedRooms() {
         <section className="featured-rooms">
           <Title title="featured rooms" />
           <div className="featured-rooms-center">
-            {loading ? <Loading /> : featuredRooms.map(room => {
-              return <Room key={room.id} room={room} />
-            })}
+            {loading ? <Loading /> : featuredRooms.map(room => (
+              <Room key={room.id} room={room} />
+            ))}
           </div>
         </section>
       )}

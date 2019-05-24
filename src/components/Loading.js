@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export default function Loading() {
   return (
     <div className="spinner-wrap">
       <div className="spinner"></div>
     </div>
-  )
+  );
 }

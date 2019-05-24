@@ -20,5 +20,5 @@ export default function Home() {
       <Services />
       <FeaturedRooms />
     </React.Fragment>
-  )
+  );
 }

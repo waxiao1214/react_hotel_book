@@ -14,5 +14,5 @@ export default function RoomsList() {
         </Banner>
       </Hero>
     </React.Fragment>
-  )
+  );
 }
