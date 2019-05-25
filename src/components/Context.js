@@ -80,6 +80,9 @@ Provider.propTypes = {
     sortedRooms: PropTypes.arrayOf(PropTypes.object).isRequired,
     featuredRooms: PropTypes.arrayOf(PropTypes.object).isRequired,
     getRoom: PropTypes.func.isRequired,
-    children: PropTypes.element,
   }).isRequired,
+};
+
+RoomProvider.propTypes = {
+  children: PropTypes.element,
 };
