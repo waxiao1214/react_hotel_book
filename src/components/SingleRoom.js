@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import defaultBg from '../img/room-1.jpeg';
 import Banner from './Banner';
 import StyledHero from '../components/StyledHero';
+import PropTypes from 'prop-types';
 
 export default class SingleRoom extends Component {
   state = {
@@ -90,3 +91,13 @@ export default class SingleRoom extends Component {
     );
   }
 }
+
+SingleRoom.propTypes = {
+  state: PropTypes.shape({
+    slug: PropTypes.string.isRequired,
+    defaultBg: PropTypes.string.isRequired,
+  }),
+  match: PropTypes.shape({
+    params: PropTypes.objectOf(PropTypes.string).isRequired,
+  }).isRequired,
+};

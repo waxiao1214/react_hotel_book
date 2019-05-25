@@ -13,9 +13,9 @@ function App() {
       <React.Fragment>
         <Navbar />
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/rooms" exact component={RoomsList} />
-          <Route path="/rooms/:slug" component={SingleRoom} />
+          <Route path='/' exact component={Home} />
+          <Route path='/rooms' exact component={RoomsList} />
+          <Route path='/rooms/:slug' component={SingleRoom} />
           <Route component={Error} />
         </Switch>
       </React.Fragment>

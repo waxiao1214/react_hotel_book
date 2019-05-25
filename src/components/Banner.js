@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Banner({ children, title, subtitle }) {
   return (
@@ -12,3 +13,9 @@ export default function Banner({ children, title, subtitle }) {
     </div>
   );
 }
+
+Banner.propTypes = {
+  children: PropTypes.element.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+};
