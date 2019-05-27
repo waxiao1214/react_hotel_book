@@ -3,7 +3,7 @@ import Hero from './Hero';
 import { Link } from 'react-router-dom';
 import Banner from './Banner';
 
-export default function RoomsList() {
+export default function Rooms() {
   return (
     <React.Fragment>
       <Hero hero='rooms-hero'>
