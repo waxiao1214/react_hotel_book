@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from './Hero';
 import { Link } from 'react-router-dom';
 import Banner from './Banner';
+import RoomsContainer from './RoomsContainer';
 
 export default function Rooms() {
   return (
@@ -13,6 +14,7 @@ export default function Rooms() {
           </Link>
         </Banner>
       </Hero>
+      <RoomsContainer />
     </React.Fragment>
   );
 }

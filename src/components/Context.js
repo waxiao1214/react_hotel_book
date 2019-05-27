@@ -16,15 +16,12 @@ export default class RoomProvider extends Component {
     // format data for Contentful CMS
     const rooms = this.formatData(items);
     const featuredRooms = rooms.filter(room => room.featured === true);
-    this.setState(
-      () => ({
-        rooms,
-        featuredRooms,
-        sortedRooms: rooms,
-        loading: false,
-      }),
-      () => console.log('state.rooms:', this.state.rooms)
-    );
+    this.setState(() => ({
+      rooms,
+      featuredRooms,
+      sortedRooms: rooms,
+      loading: false,
+    }));
   }
 
   formatData = items => {
