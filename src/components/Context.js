@@ -55,6 +55,14 @@ export default class RoomProvider extends Component {
   }
 }
 
+export function withConsumer(Component) {
+  return function ConsumerWrapper(props) {
+    return (
+      <Consumer>{value => <Component {...props} context={value} />}</Consumer>
+    );
+  };
+}
+
 Provider.propTypes = {
   value: PropTypes.shape({
     rooms: PropTypes.arrayOf(
