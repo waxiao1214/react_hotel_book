@@ -10,17 +10,32 @@ export default class RoomProvider extends Component {
     sortedRooms: [],
     featuredRooms: [],
     loading: true,
+    type: 'all',
+    capacity: 1,
+    price: 0,
+    minPrice: 0,
+    maxPrice: 0,
+    minSize: 0,
+    maxSize: 0,
+    breakfast: false,
+    pets: false,
   };
 
   componentDidMount() {
     // format data for Contentful CMS
     const rooms = this.formatData(items);
     const featuredRooms = rooms.filter(room => room.featured === true);
+    const maxPrice = Math.max(...rooms.map(item => item.price));
+    const maxSize = Math.max(...rooms.map(item => item.size));
+
     this.setState(() => ({
       rooms,
       featuredRooms,
       sortedRooms: rooms,
       loading: false,
+      price: maxSize,
+      maxPrice,
+      maxSize,
     }));
   }
 
@@ -41,12 +56,24 @@ export default class RoomProvider extends Component {
     return room;
   };
 
+  handleChange = e => {
+    const type = e.target.type;
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log(type, name, value);
+  };
+
+  filterRooms = () => {
+    console.log('Hello from filterRooms function');
+  };
+
   render() {
     return (
       <Provider
         value={{
           ...this.state,
           getRoom: this.getRoom,
+          handleChange: this.handleChange,
         }}
       >
         {this.props.children}
@@ -85,6 +112,7 @@ Provider.propTypes = {
     sortedRooms: PropTypes.arrayOf(PropTypes.object).isRequired,
     featuredRooms: PropTypes.arrayOf(PropTypes.object).isRequired,
     getRoom: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
   }).isRequired,
 };
 
