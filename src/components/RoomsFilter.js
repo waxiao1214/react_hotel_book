@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { Context } from './Context';
 import Title from './Title';
+import PropTypes from 'prop-types';
 
 const getUnique = (items, value) => [
   ...new Set(items.map(item => item[value])),
@@ -131,3 +132,23 @@ export default function RoomsFilter({ rooms }) {
     </section>
   );
 }
+
+RoomsFilter.propTypes = {
+  rooms: PropTypes.arrayOf(
+    PropTypes.shape({
+      breakfast: PropTypes.bool.isRequired,
+      capacity: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired,
+      extras: PropTypes.arrayOf(PropTypes.string).isRequired,
+      featured: PropTypes.bool.isRequired,
+      id: PropTypes.string.isRequired,
+      images: PropTypes.arrayOf(PropTypes.string).isRequired,
+      name: PropTypes.string.isRequired,
+      pets: PropTypes.bool.isRequired,
+      price: PropTypes.number.isRequired,
+      size: PropTypes.number.isRequired,
+      slug: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+};
