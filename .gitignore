@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# access token
+.env.development
+
 # production
 /build
 
