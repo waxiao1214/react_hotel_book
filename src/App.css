@@ -8,6 +8,7 @@
 
 :root {
   --primaryColor: #af9a7d;
+  --logoColor: #f8aba5;
   --mainWhite: #fff;
   --offWhite: #f7f7f7;
   --mainBlack: #222;
@@ -171,7 +172,7 @@ h6 {
   display: block;
   text-decoration: none;
   padding: 1rem 0;
-  color: var(--mainBlack);
+  color: var(--primaryColor);
   transition: var(--mainTransition);
   text-align: center;
   font-size: 1rem;
@@ -180,7 +181,7 @@ h6 {
 }
 
 .nav-links a:hover {
-  color: var(--primaryColor);
+  color: var(--logoColor);
 }
 
 .show-nav {
