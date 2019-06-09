@@ -34,7 +34,7 @@ export default class RoomProvider extends Component {
       featuredRooms,
       sortedRooms: rooms,
       loading: false,
-      price: maxSize,
+      price: maxPrice,
       maxPrice,
       maxSize,
     }));
@@ -80,12 +80,16 @@ export default class RoomProvider extends Component {
     // the filter condition will do automatic type conversion for the string that is returned from the select element, because we compare with a number in the if condition, so this is just to be safe.
     capacity = parseInt(capacity, 10);
 
+    //  filter by type
     if (type !== 'all') {
       tempRooms = tempRooms.filter(room => room.type === type);
     }
+    // filter by capacity
     if (capacity !== 1) {
       tempRooms = tempRooms.filter(room => room.capacity >= capacity);
     }
+    // filter by price
+    tempRooms = tempRooms.filter(room => room.price < price);
 
     this.setState({ sortedRooms: tempRooms });
   };
