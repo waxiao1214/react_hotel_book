@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import items from '../data';
 import PropTypes from 'prop-types';
 
-export const { Provider, Consumer } = React.createContext();
+export const Context = React.createContext();
+export const { Provider, Consumer } = Context;
 
 export default class RoomProvider extends Component {
   state = {
@@ -57,14 +58,28 @@ export default class RoomProvider extends Component {
   };
 
   handleChange = e => {
-    const type = e.target.type;
+    const target = e.target;
     const name = e.target.name;
-    const value = e.target.value;
-    console.log(type, name, value);
+    const value = e.type === 'checkbox' ? target.checked : target.value;
+    this.setState(() => ({ [name]: value }), this.filterRooms);
   };
 
   filterRooms = () => {
-    console.log('Hello from filterRooms function');
+    const {
+      rooms,
+      type,
+      capacity,
+      price,
+      minSize,
+      maxSize,
+      breakfast,
+      pets,
+    } = this.state;
+    let tempRooms = [...rooms];
+    if (type !== 'all') {
+      tempRooms = tempRooms.filter(room => room.type === type);
+    }
+    this.setState({ sortedRooms: tempRooms });
   };
 
   render() {
