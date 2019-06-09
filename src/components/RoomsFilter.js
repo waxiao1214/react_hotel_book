@@ -80,6 +80,32 @@ export default function RoomsFilter({ rooms }) {
             onChange={handleChange}
           />
         </div>
+
+        <div className="form-group">
+          <label htmlFor="size">
+            room size (m<sup>2</sup>)
+          </label>
+          <div className="size-inputs">
+            <input
+              className="size-input"
+              type="number"
+              name="minSize"
+              id="size"
+              value={minSize}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="size-inputs">
+            <input
+              className="size-input"
+              type="number"
+              name="maxSize"
+              id="size"
+              value={maxSize}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
       </form>
     </section>
   );
