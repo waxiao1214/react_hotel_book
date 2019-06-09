@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import items from '../data';
+import Client from '../Contentful';
 import PropTypes from 'prop-types';
 
 export const Context = React.createContext();
@@ -23,22 +23,35 @@ export default class RoomProvider extends Component {
   };
 
   componentDidMount() {
-    // format data for Contentful CMS
-    const rooms = this.formatData(items);
-    const featuredRooms = rooms.filter(room => room.featured === true);
-    const maxPrice = Math.max(...rooms.map(item => item.price));
-    const maxSize = Math.max(...rooms.map(item => item.size));
-
-    this.setState(() => ({
-      rooms,
-      featuredRooms,
-      sortedRooms: rooms,
-      loading: false,
-      price: maxPrice,
-      maxPrice,
-      maxSize,
-    }));
+    this.getData();
   }
+
+  getData = async () => {
+    try {
+      // Receive data from Contentful
+      const response = await Client.getEntries({
+        content_type: 'velvetHotel',
+        order: 'sys.createdAt',
+      });
+
+      const rooms = this.formatData(response.items);
+      const featuredRooms = rooms.filter(room => room.featured === true);
+      const maxPrice = Math.max(...rooms.map(item => item.price));
+      const maxSize = Math.max(...rooms.map(item => item.size));
+
+      this.setState(() => ({
+        rooms,
+        featuredRooms,
+        sortedRooms: rooms,
+        loading: false,
+        price: maxPrice,
+        maxPrice,
+        maxSize,
+      }));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   formatData = items => {
     const tempItems = items.map(item => {
