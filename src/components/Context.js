@@ -44,7 +44,7 @@ export default class RoomProvider extends Component {
     const tempItems = items.map(item => {
       const id = item.sys.id;
       const images = item.fields.images.map(image => image.fields.file.url);
-      /* the new images property from the rooms object will overwrite the original property destructured by ...items.fields. Instead of an array with objects it now has a url string as a value */
+      /* the new images property from the rooms object will overwrite the original property. Instead of an array with objects it now has a url string as a value */
       const room = { ...item.fields, images, id };
       return room;
     });
@@ -65,7 +65,7 @@ export default class RoomProvider extends Component {
   };
 
   filterRooms = () => {
-    const {
+    let {
       rooms,
       type,
       capacity,
@@ -75,10 +75,18 @@ export default class RoomProvider extends Component {
       breakfast,
       pets,
     } = this.state;
+
     let tempRooms = [...rooms];
+    // the filter condition will do automatic type conversion for the string that is returned from the select element, because we compare with a number in the if condition, so this is just to be safe.
+    capacity = parseInt(capacity, 10);
+
     if (type !== 'all') {
       tempRooms = tempRooms.filter(room => room.type === type);
     }
+    if (capacity !== 1) {
+      tempRooms = tempRooms.filter(room => room.capacity >= capacity);
+    }
+
     this.setState({ sortedRooms: tempRooms });
   };
 
